@@ -35,7 +35,7 @@ class Main {
 					}
 					var howManySeconds = StringTools.contains(text, '/settime') ? text.split(" ")[1] : "a couple";
 					text = StringTools.trim(StringTools.replace(StringTools.trim(text), '/settime $howManySeconds', ""));
-					var whatDoesItSay = "nothing";
+					var whatDoesItSay = "(foreign)";
 					if (text != "") {
 						whatDoesItSay = text;
 					}
@@ -68,7 +68,7 @@ class Main {
 					o.writeString('\n\n');
 				case "scene":
 					o.writeString('(SCENE) ${parameters.scene.text} ');
-					o.writeString('featuring ${parameters.actor1.text} ${parameters.location1.text}');
+					if (parameters.actor1 != null) o.writeString('featuring ${parameters.actor1.text} ${parameters.location1.text}');
 					if (parameters.actor2 != null) o.writeString(' and ${parameters.actor2.text} ${parameters.location2.text}.');
 					if (parameters.camera != null) {
 						var camera = parameters.camera;
@@ -77,7 +77,9 @@ class Main {
 					o.writeString('\n\n');
 				case "dialogue":
 					var text = (cast parameters.text).text;
+					if (parameters.character == null) continue;
 					var character = parameters.character.text;
+					if (parameters.expression == null) continue;
 					var expression = parameters.expression.text;
 
 					// This corrects the expression for the current dialogue line.
