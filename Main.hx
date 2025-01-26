@@ -69,7 +69,7 @@ class Main {
 				case "scene":
 					o.writeString('(SCENE) ${parameters.scene.text} ');
 					o.writeString('featuring ${parameters.actor1.text} ${parameters.location1.text}');
-					if (parameters.actor2 != null) o.writeString(' and ${parameters.actor2.text} ${parameters.location2.text})');
+					if (parameters.actor2 != null) o.writeString(' and ${parameters.actor2.text} ${parameters.location2.text}.');
 					if (parameters.camera != null) {
 						var camera = parameters.camera;
 						o.writeString(' The camera is at ${camera.type.name.toLowerCase()}.');
